@@ -3,6 +3,8 @@ import os
 import pathlib
 import logging
 
+from pandas import DataFrame
+
 
 logger = logging.getLogger("churn")
 
