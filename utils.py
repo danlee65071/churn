@@ -3,10 +3,22 @@ import os
 import pathlib
 import logging
 
-from pandas import DataFrame
+from sklearn.base import BaseEstimator, TransformerMixin
+
 
 
 logger = logging.getLogger("churn")
+
+
+class DataFrameSelector(BaseEstimator, TransformerMixin):
+    def __init__(self, attributes_name):
+        self.attributes_name = attributes_name
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        return X[self.attributes_name].values
 
 
 def extract(path_zip: str, dir_extract: str):
